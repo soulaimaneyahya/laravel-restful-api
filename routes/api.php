@@ -15,6 +15,11 @@ use App\Http\Controllers\User\UserController;
 */
 
 /**
+ * Users
+ */
+Route::resource('users', UserController::class)->except(['create', 'edit']);
+
+/**
  * Buyers
  */
 Route::resource('buyers', BuyerController::class)->only(['index', 'show']);
@@ -23,13 +28,6 @@ Route::resource('buyers', BuyerController::class)->only(['index', 'show']);
  * Sellers
  */
 Route::resource('sellers', SellerController::class)->only(['index', 'show']);
-
-
-/**
- * Users
- */
-Route::resource('users', UserController::class)->only(['index', 'show']);
-
 
 /**
  * Category

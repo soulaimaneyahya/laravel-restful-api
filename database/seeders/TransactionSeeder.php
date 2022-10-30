@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Seller;
+use App\Models\Transaction;
 use Illuminate\Database\Seeder;
 
 class TransactionSeeder extends Seeder
@@ -16,13 +17,14 @@ class TransactionSeeder extends Seeder
     public function run()
     {
         $count = max((int)$this->command->ask("How many transactions would you like ?", 10), 1);
-        
-        $seller = Seller::has('products')->get()->random();
-        $buyer = User::all()->except($seller->id)->random();
 
-        $transactions = \App\Models\Transaction::factory($count)->create([
-            'buyer_id' => $buyer->id,
-            'product_id' => $seller->products->random()->id
-        ]);
+        $transactions = Transaction::factory($count)->make()->each(function($transaction) {
+            $seller = Seller::has('products')->get()->random();
+            $buyer = User::all()->except($seller->id)->random();
+
+            $transaction->buyer_id = $buyer->id;
+            $transaction->product_id = $seller->products->random()->id;
+            $transaction->save();
+        });
     }
 }

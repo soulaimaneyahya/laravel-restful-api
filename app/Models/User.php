@@ -35,6 +35,20 @@ class User extends Authenticatable
         'admin'
     ];
 
+    // Accessors and mutators
+    public function setNameAttribute($name)
+    {
+        return $this->attributes['name'] = strtolower($name);
+    }
+    public function getNameAttribute($name)
+    {
+        return ucwords($name);
+    }
+    public function setEmailAttribute($email)
+    {
+        return $this->attributes['email'] = strtolower($email);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -43,7 +57,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'verification_token'
+        'email_verified_at',
+        'updated_at',
+        'deleted_at',
+        'verified',
+        'verification_token',
+        'admin'
     ];
 
     /**
