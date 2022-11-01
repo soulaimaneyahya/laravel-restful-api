@@ -6,7 +6,7 @@ use App\Traits\ApiResponser;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class UserRepository
+class ApiRepository
 {
     use ApiResponser;
 

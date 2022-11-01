@@ -7,11 +7,12 @@ use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     const VERIFIED_USER = '1';
     const UNVERIFIED_USER = '0';
@@ -20,6 +21,7 @@ class User extends Authenticatable
     const REGULAR_USER = 'false';
 
     protected $table = 'users';
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -32,7 +34,23 @@ class User extends Authenticatable
         'password',
         'verified',
         'verification_token',
-        'admin'
+        'admin',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+        'email_verified_at',
+        'verified',
+        'api_token',
+        'verification_token',
+        'admin',
+        'deleted_at',
     ];
 
     // Accessors and mutators
@@ -50,20 +68,11 @@ class User extends Authenticatable
     }
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
+     * Disable auto incrementing
+     * 
+     * @var bool
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        'email_verified_at',
-        'updated_at',
-        'deleted_at',
-        'verified',
-        'verification_token',
-        'admin'
-    ];
+    public $incrementing = false;
 
     /**
      * The attributes that should be cast.
@@ -71,6 +80,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        'id' => 'string',
         'email_verified_at' => 'datetime',
     ];
 

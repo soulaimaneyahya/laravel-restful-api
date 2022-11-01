@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\User;
 use App\Traits\ApiResponser;
 use Illuminate\Support\Collection;
-use App\Repositories\UserRepository;
+use App\Repositories\ApiRepository;
 use Illuminate\Database\Eloquent\Model;
 
 class UserService
@@ -14,19 +14,19 @@ class UserService
 
     public function __construct
     (
-        private UserRepository $userRepository,
+        private ApiRepository $apiRepository,
     )
     {
     }
     
     public function all(Collection $collection)
     {
-        return $this->userRepository->all($collection);
+        return $this->apiRepository->all($collection);
     }
 
     public function find(Model $model)
     {
-        return $this->userRepository->find($model);
+        return $this->apiRepository->find($model);
     }
 
     public function store(array $data)
@@ -37,10 +37,10 @@ class UserService
         $data['admin'] = User::REGULAR_USER;
 
         $user = User::create($data);
-        return $this->userRepository->find($user);
+        return $this->apiRepository->find($user);
     }
 
-    public function update(User $user, array $data)
+    public function update(array $data, User $user)
     {
         if (isset($data['name'])) {
             $user->name = $data['name'];
@@ -68,12 +68,12 @@ class UserService
         }
 
         $user->save();
-        return $this->userRepository->find($user);
+        return $this->apiRepository->find($user);
     }
 
     public function delete(User $user)
     {
         $user->delete();
-        return $this->infoResponse('user deleted !', 204);
+        return $this->infoResponse('user deleted !', 200);
     }
 }

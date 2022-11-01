@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,7 @@ class TransactionFactory extends Factory
     public function definition()
     {
         return [
+            'id' => Str::uuid(),
             'quantity' => fake()->numberBetween(1,3)
         ];
     }

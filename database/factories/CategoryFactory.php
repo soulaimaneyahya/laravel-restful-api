@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
+            'id' => Str::uuid(),
             'name' => fake()->sentence($nbWords = 2),
             'description' => fake()->paragraph($nbSentences = 3)
         ];

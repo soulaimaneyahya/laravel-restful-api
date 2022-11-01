@@ -19,7 +19,7 @@ class TransactionSeeder extends Seeder
         $count = max((int)$this->command->ask("How many transactions would you like ?", 10), 1);
 
         $transactions = Transaction::factory($count)->make()->each(function($transaction) {
-            $seller = Seller::has('products')->get()->random();
+            $seller = Seller::all()->random();
             $buyer = User::all()->except($seller->id)->random();
 
             $transaction->buyer_id = $buyer->id;

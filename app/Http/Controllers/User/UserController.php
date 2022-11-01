@@ -57,7 +57,7 @@ class UserController extends ApiController
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        return $this->userService->update($user, $request->validated());
+        return $this->userService->update($request->validated(), $user);
     }
 
     /**

@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('category_product', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignUuid('category_id')->constrained();
-            $table->foreignUuid('product_id')->constrained();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('api_token', 80)
+            ->after('password')
+            ->unique()
+            ->nullable()
+            ->default(null);
         });
     }
 
@@ -28,6 +29,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_product');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('api_token');
+        });
     }
 };

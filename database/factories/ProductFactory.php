@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
+            'id' => Str::uuid(),
             'name' => fake()->sentence($nbWords = 3),
             'description' => fake()->paragraph($nbSentences = 3),
             'quantity' => fake()->numberBetween(1, 10),

@@ -21,8 +21,7 @@ class SellerController extends ApiController
      */
     public function index()
     {
-        $sellers = Seller::has('products')->get();
-        return $this->userService->all($sellers);
+        return $this->userService->all(Seller::all());
     }
 
     /**
@@ -33,7 +32,6 @@ class SellerController extends ApiController
      */
     public function show(Seller $seller)
     {
-        $seller = Seller::has('products')->findOrFail($seller->id);
         return $this->userService->find($seller);
     }
 }

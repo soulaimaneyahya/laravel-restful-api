@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
@@ -17,7 +18,11 @@ class ProductSeeder extends Seeder
         $count = max((int)$this->command->ask("How many products would you like ?", 10), 1);
         $products = \App\Models\Product::factory($count)->create()->each(function($product) {
             $categories = Category::all()->random(random_int(1,5))->pluck('id');
-            $product->categories()->attach($categories);
+            foreach ($categories as $category) {
+                $product->categories()->attach($category, [
+                    'id' => Str::uuid()
+                ]);
+            }
         });
     }
 }
