@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Seller;
+namespace App\Http\Controllers\Api\V1\Seller;
 
 use App\Models\Seller;
 use App\Services\UserService;

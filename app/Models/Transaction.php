@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, HasUuids, SoftDeletes;
     protected $fillable = [
+        'transaction_no',
+        'product_id',
         'quantity',
         'buyer_id',
-        'product_id',
     ];
     protected $dates = ['deleted_at'];
     protected $hidden = [

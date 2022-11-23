@@ -3,10 +3,11 @@
 namespace App\Repositories;
 
 use App\Traits\ApiResponser;
+use App\Interfaces\ApiInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class ApiRepository
+class ApiRepository implements ApiInterface
 {
     use ApiResponser;
 

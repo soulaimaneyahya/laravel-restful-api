@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace App\Http\Controllers\Api\V1\Product;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
@@ -28,12 +30,12 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        return $this->productService->store($request->validated());
     }
 
     /**
@@ -50,13 +52,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UpdateProductRequest  $request
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        return $this->productService->update($request->validated(), $product);
     }
 
     /**
@@ -67,6 +69,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        return $this->productService->delete($product);
     }
 }

@@ -24,7 +24,7 @@ class UpdateCategory extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail',
+            'name' => ['bail'],
             'description' => ['max:700']
         ];
     }

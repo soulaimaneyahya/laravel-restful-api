@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->integer('quantity')->unsigned();
+            $table->string('transaction_no');
             $table->foreignUuid('buyer_id')->constrained()->on('users');
             $table->foreignUuid('product_id')->constrained();
+            $table->integer('quantity')->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });

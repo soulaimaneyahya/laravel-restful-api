@@ -3,22 +3,11 @@
 namespace App\Services;
 
 use App\Models\User;
-use App\Traits\ApiResponser;
 use Illuminate\Support\Collection;
-use App\Repositories\ApiRepository;
 use Illuminate\Database\Eloquent\Model;
 
-class UserService
+class UserService extends AppService
 {
-    use ApiResponser;
-
-    public function __construct
-    (
-        private ApiRepository $apiRepository,
-    )
-    {
-    }
-    
     public function all(Collection $collection)
     {
         return $this->apiRepository->all($collection);

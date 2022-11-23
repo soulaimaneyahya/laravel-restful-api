@@ -3,22 +3,11 @@
 namespace App\Services;
 
 use App\Models\Category;
-use App\Traits\ApiResponser;
-use App\Repositories\ApiRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
-class CategoryService
+class CategoryService extends AppService
 {
-    use ApiResponser;
-
-    public function __construct
-    (
-        private ApiRepository $apiRepository
-    )
-    {
-    }
-
     public function all(Collection $collection)
     {
         return $this->apiRepository->all($collection);        
@@ -39,6 +28,10 @@ class CategoryService
     {
         if (isset($data['name'])) {
             $category->name = $data['name'];
+        }
+
+        if (isset($data['description'])) {
+            $category->description = $data['description'];
         }
 
         if (!$category->isDirty()) {

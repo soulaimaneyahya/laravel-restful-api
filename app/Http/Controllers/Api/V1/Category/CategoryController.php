@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Api\V1\Category;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Services\CategoryService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategory;
