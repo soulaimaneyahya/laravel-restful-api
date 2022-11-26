@@ -1,0 +1,1216 @@
+{
+	"info": {
+		"_postman_id": "0a2a82e6-74ea-47aa-be20-4644cd0b310a",
+		"name": "product-categories",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17284909"
+	},
+	"item": [
+		{
+			"name": "buyers",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/buyers?per_page=5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"buyers"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/buyers/5aaeded5-b85e-471e-b245-b62bf096f28e",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"buyers",
+								"5aaeded5-b85e-471e-b245-b62bf096f28e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuyerTransaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/buyers/5aaeded5-b85e-471e-b245-b62bf096f28e/transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"buyers",
+								"5aaeded5-b85e-471e-b245-b62bf096f28e",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuyerProduct",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/buyers/5aaeded5-b85e-471e-b245-b62bf096f28e/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"buyers",
+								"5aaeded5-b85e-471e-b245-b62bf096f28e",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuyerSeller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/buyers/5aaeded5-b85e-471e-b245-b62bf096f28e/sellers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"buyers",
+								"5aaeded5-b85e-471e-b245-b62bf096f28e",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuyerCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/buyers/5aaeded5-b85e-471e-b245-b62bf096f28e/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"buyers",
+								"5aaeded5-b85e-471e-b245-b62bf096f28e",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sellers",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sellers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sellers/020695e0-05d6-4961-a62f-ae2f6330e784",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								"020695e0-05d6-4961-a62f-ae2f6330e784"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SellerCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sellers/020695e0-05d6-4961-a62f-ae2f6330e784/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								"020695e0-05d6-4961-a62f-ae2f6330e784",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SellerBuyers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sellers/020695e0-05d6-4961-a62f-ae2f6330e784/buyers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								"020695e0-05d6-4961-a62f-ae2f6330e784",
+								"buyers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SellerProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sellers/020695e0-05d6-4961-a62f-ae2f6330e784/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								"020695e0-05d6-4961-a62f-ae2f6330e784",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SellerTransactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sellers/020695e0-05d6-4961-a62f-ae2f6330e784/transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								"020695e0-05d6-4961-a62f-ae2f6330e784",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SellerProductsStore",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Lorem ipsum dolor sit amet",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. ",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/soulaimaneyh/Pictures/products/Hoodies/tGn0FJtRjsOwJVfSl9ZHvrqyWXLunB4r7iMeyVbQ_lg.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/sellers/020695e0-05d6-4961-a62f-ae2f6330e784/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								"020695e0-05d6-4961-a62f-ae2f6330e784",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SellerProductsUpdate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "put",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/soulaimaneyh/Pictures/products/Hoodies/Gwc9FM08Us6VdxzV1RZn6kJd6XJpFjRXdNa6fTSy_lg.jpeg"
+								},
+								{
+									"key": "quantity",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "available",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/sellers/44ffc75e-e4ef-4394-9004-7a0701219ae4/products/011b2deb-b260-4f8c-8bc6-878f889c2fe4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								"44ffc75e-e4ef-4394-9004-7a0701219ae4",
+								"products",
+								"011b2deb-b260-4f8c-8bc6-878f889c2fe4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SellerProductsDestroy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sellers/020695e0-05d6-4961-a62f-ae2f6330e784/products/d6cf1cfe-7937-4e6d-893b-93ceb2ff38a7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								"020695e0-05d6-4961-a62f-ae2f6330e784",
+								"products",
+								"d6cf1cfe-7937-4e6d-893b-93ceb2ff38a7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transactions",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/transactions/43e897e2-373a-410d-9cdd-3ba5c765ff8a",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions",
+								"43e897e2-373a-410d-9cdd-3ba5c765ff8a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionSeller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/transactions/43e897e2-373a-410d-9cdd-3ba5c765ff8a/sellers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions",
+								"43e897e2-373a-410d-9cdd-3ba5c765ff8a",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/transactions/43e897e2-373a-410d-9cdd-3ba5c765ff8a/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions",
+								"43e897e2-373a-410d-9cdd-3ba5c765ff8a",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/03ab247f-2a7d-45f4-bb89-7dd562a268c3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"03ab247f-2a7d-45f4-bb89-7dd562a268c3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"soufianeyh\",\n    \"email\": \"soufianeyh@gmail.com\",\n    \"password\": \"178914506\",\n    \"password_confirmation\": \"178914506\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "http://laravel-rest-apis.test",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"verified\": 1\n}"
+						},
+						"url": {
+							"raw": "{{url}}/users/904a14c6-c344-4261-a198-cbb935a06257",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"904a14c6-c344-4261-a198-cbb935a06257"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/07fa7b9f-86b9-4a40-80a0-7d2bb55df20f",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"07fa7b9f-86b9-4a40-80a0-7d2bb55df20f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/products?status=unavailable",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "unavailable"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/products/011b2deb-b260-4f8c-8bc6-878f889c2fe4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"011b2deb-b260-4f8c-8bc6-878f889c2fe4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductTransactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/011b2deb-b260-4f8c-8bc6-878f889c2fe4/transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"011b2deb-b260-4f8c-8bc6-878f889c2fe4",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductBuyers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/011b2deb-b260-4f8c-8bc6-878f889c2fe4/buyers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"011b2deb-b260-4f8c-8bc6-878f889c2fe4",
+								"buyers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/011b2deb-b260-4f8c-8bc6-878f889c2fe4/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"011b2deb-b260-4f8c-8bc6-878f889c2fe4",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductCategoryStore",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"health & fitness\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. \"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/products/011b2deb-b260-4f8c-8bc6-878f889c2fe4/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"011b2deb-b260-4f8c-8bc6-878f889c2fe4",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductCategoryUpdate",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"health & fitness\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/products/011b2deb-b260-4f8c-8bc6-878f889c2fe4/categories/97d67be6-f2a4-407d-af44-cae925983b33",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"011b2deb-b260-4f8c-8bc6-878f889c2fe4",
+								"categories",
+								"97d67be6-f2a4-407d-af44-cae925983b33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductCategoryDestroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/products/011b2deb-b260-4f8c-8bc6-878f889c2fe4/categories/97d67be6-f2a4-407d-af44-cae925983b33",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"011b2deb-b260-4f8c-8bc6-878f889c2fe4",
+								"categories",
+								"97d67be6-f2a4-407d-af44-cae925983b33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductBuyersTransactions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quantity\": 10\n}"
+						},
+						"url": {
+							"raw": "{{url}}/products/011b2deb-b260-4f8c-8bc6-878f889c2fe4/buyers/904a14c6-c344-4261-a198-cbb935a06257/transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"011b2deb-b260-4f8c-8bc6-878f889c2fe4",
+								"buyers",
+								"904a14c6-c344-4261-a198-cbb935a06257",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/categories/97d67815-845e-44c8-9b7e-695dad429a2b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"97d67815-845e-44c8-9b7e-695dad429a2b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "http://laravel-rest-apis.test",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Voluptates lorem.\",\n    \"description\": \"Voluptates lorem ipsam sed reiciendis. Non molestias odit voluptatem quo similique.\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/categories/0094aa74-a7bb-4ae0-8881-d649c95ddd2e",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"0094aa74-a7bb-4ae0-8881-d649c95ddd2e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/categories/97d67be6-f2a4-407d-af44-cae925983b33",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"97d67be6-f2a4-407d-af44-cae925983b33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Voluptates lorem.\",\n    \"description\": \"Voluptates lorem ipsam sed reiciendis. Non molestias odit voluptatem quo similique.\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CategoryProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories/01e7015d-d42c-4327-b628-0e50adba705e/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"01e7015d-d42c-4327-b628-0e50adba705e",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CategorySeller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories/01e7015d-d42c-4327-b628-0e50adba705e/sellers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"01e7015d-d42c-4327-b628-0e50adba705e",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CategoryBuyer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories/01e7015d-d42c-4327-b628-0e50adba705e/buyers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"01e7015d-d42c-4327-b628-0e50adba705e",
+								"buyers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CategoryTransactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories/01e7015d-d42c-4327-b628-0e50adba705e/transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"01e7015d-d42c-4327-b628-0e50adba705e",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://laravel-rest-apis.test/",
+					"protocol": "http",
+					"host": [
+						"laravel-rest-apis",
+						"test"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -17,6 +17,8 @@ class ApiRepository implements ApiInterface
 
     public function all(Collection $collection, $code = 200)
     {
+        $collection = $this->filterData($collection);
+        $collection = $this->sortData($collection);
         $collection = $this->paginate($collection);
         $collection = $this->cacheResponse($collection);
 
@@ -27,6 +29,25 @@ class ApiRepository implements ApiInterface
     {
         return $this->successResponse(['data' => $model], $code);
     }
+
+	protected function filterData(Collection $collection)
+	{
+		foreach (request()->query() as $attribute => $value) {
+			if (isset($attribute, $value)) {
+				$collection = $collection->where($attribute, $value);
+			}
+		}
+		return $collection;
+	}
+
+	protected function sortData(Collection $collection)
+	{
+		if (request()->has('sort_by')) {
+			$attribute = request('sort_by');
+			$collection = $collection->sortBy->{$attribute};
+		}
+		return $collection;
+	}
 
 	protected function paginate(Collection $collection)
 	{
