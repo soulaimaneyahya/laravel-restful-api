@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Product;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProductRequest extends FormRequest
@@ -29,8 +27,6 @@ class StoreProductRequest extends FormRequest
             'name' => ['bail', 'required'],
             'description' => ['required', 'max:700'],
             'quantity' => ['required', 'integer', 'min:1'],
-            'status' => Rule::in([Product::AVAILABLE_PRODUCT, Product::UNAVAILABLE_PRODUCT]),
-            'seller_id' => ['required'],
             'image' => ['required', 'image']
         ];
     }

@@ -34,7 +34,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategory $request)
     {
-        return $this->categoryService->store($request->validated());
+        return $this->categoryService->store($request->validated(), null);
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategory $request, Category $category)
     {
-        return $this->categoryService->update($request->validated(), $category);
+        return $this->categoryService->update($request->validated(), null, $category);
     }
 
     /**
@@ -68,6 +68,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        return $this->categoryService->delete($category);
+        return $this->categoryService->delete(null, $category);
     }
 }

@@ -24,7 +24,8 @@ class Product extends Model
     ];
     protected $dates = ['deleted_at'];
     protected $hidden = [
-        'deleted_at'
+        'deleted_at',
+        'pivot'
     ];
 
     /**
@@ -61,5 +62,17 @@ class Product extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::updated(function(Product $product){
+            if ($product->quantity == 0 && $product->isAvailable()) {
+                $product->status = Product::UNAVAILABLE_PRODUCT;
+                $product->save();
+            }
+        });
     }
 }

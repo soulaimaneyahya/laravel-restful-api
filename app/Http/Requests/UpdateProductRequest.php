@@ -30,7 +30,6 @@ class UpdateProductRequest extends FormRequest
             'description' => ['max:700'],
             'quantity' => ['integer', 'min:1'],
             'status' => Rule::in([Product::AVAILABLE_PRODUCT, Product::UNAVAILABLE_PRODUCT]),
-            'seller_id' => ['bail'],
             'image' => ['image']
         ];
     }

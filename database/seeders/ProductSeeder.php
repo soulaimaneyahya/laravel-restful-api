@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
 use App\Models\Category;
+use App\Models\CategoryProduct;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
@@ -15,14 +17,13 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $count = max((int)$this->command->ask("How many products would you like ?", 10), 1);
-        $products = \App\Models\Product::factory($count)->create()->each(function($product) {
-            $categories = Category::all()->random(random_int(1,5))->pluck('id');
-            foreach ($categories as $category) {
-                $product->categories()->attach($category, [
-                    'id' => Str::uuid()
-                ]);
-            }
+        $count = max((int)$this->command->ask("How many products would you like ?", 200), 1);
+        Product::factory($count)->create();
+
+        Product::all()->each(function (Product $product) {
+            $take = random_int(1, 10);
+            $categories = Category::inRandomOrder()->take($take)->get()->pluck('id');
+            $product->categories()->syncWithoutDetaching($categories);
         });
     }
 }

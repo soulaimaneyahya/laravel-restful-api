@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers\Api\V1\Transaction;
 
-use App\Http\Controllers\Controller;
 use App\Models\Transaction;
-use App\Services\TransactionService;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TransactionController extends Controller
-{
-    public function __construct
-    (
-        private TransactionService $transactionService,
-    )
-    {
-    }
+{   
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +14,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return $this->transactionService->all(Transaction::all());
+        return $this->apiRepository->all(Transaction::all());
     }
 
     /**
@@ -33,6 +25,6 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        return $this->transactionService->find($transaction);
+        return $this->apiRepository->find($transaction);
     }
 }

@@ -16,7 +16,7 @@ class TransactionSeeder extends Seeder
      */
     public function run()
     {
-        $count = max((int)$this->command->ask("How many transactions would you like ?", 10), 1);
+        $count = max((int)$this->command->ask("How many transactions would you like ?", 1000), 1);
 
         $transactions = Transaction::factory($count)->make()->each(function($transaction) {
             $seller = Seller::all()->random();

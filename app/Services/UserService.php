@@ -52,6 +52,13 @@ class UserService extends AppService
             $user->admin = $data['admin'];
         }
 
+        if (isset($data['verified'])) {
+            if (!$user->isVerified()) {
+                $user->verified = User::VERIFIED_USER;
+                $user->verification_token = null;
+            }
+        }
+
         if (!$user->isDirty()) {
             return $this->infoResponse('You need to specify diff value to change', 422);
         }

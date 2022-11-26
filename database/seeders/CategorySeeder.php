@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $count = max((int)$this->command->ask("How many categories would you like ?",10), 1);
+        $count = max((int)$this->command->ask("How many categories would you like ?", 200), 1);
         $categories = \App\Models\Category::factory($count)->create();
     }
 }

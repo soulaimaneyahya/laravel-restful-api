@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers\Api\V1\Buyer;
 
+use App\Http\Controllers\Controller;
 use App\Models\Buyer;
-use App\Services\UserService;
-use App\Http\Controllers\ApiController;
 
-class BuyerController extends ApiController
+class BuyerController extends Controller
 {
-    public function __construct
-    (
-        private UserService $userService,
-    )
-    {
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +14,7 @@ class BuyerController extends ApiController
      */
     public function index()
     {
-        return $this->userService->all(Buyer::all());
+        return $this->apiRepository->all(Buyer::all());
     }
 
     /**
@@ -33,6 +25,6 @@ class BuyerController extends ApiController
      */
     public function show(Buyer $buyer)
     {
-        return $this->userService->find($buyer);
+        return $this->apiRepository->find($buyer);
     }
 }

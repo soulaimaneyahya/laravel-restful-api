@@ -3,17 +3,10 @@
 namespace App\Http\Controllers\Api\V1\Seller;
 
 use App\Models\Seller;
-use App\Services\UserService;
 use App\Http\Controllers\ApiController;
 
 class SellerController extends ApiController
 {
-    public function __construct
-    (
-        private UserService $userService,
-    )
-    {
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +14,7 @@ class SellerController extends ApiController
      */
     public function index()
     {
-        return $this->userService->all(Seller::all());
+        return $this->apiRepository->all(Seller::all());
     }
 
     /**
@@ -32,6 +25,6 @@ class SellerController extends ApiController
      */
     public function show(Seller $seller)
     {
-        return $this->userService->find($seller);
+        return $this->apiRepository->find($seller);
     }
 }
