@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\CategoryProduct;
-use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Transformers\UserTransformer;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
@@ -24,6 +25,8 @@ class User extends Authenticatable
 
     protected $table = 'users';
     protected $dates = ['deleted_at'];
+
+    public $transformer = UserTransformer::class;
 
     /**
      * The attributes that are mass assignable.

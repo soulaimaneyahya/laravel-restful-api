@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Transformers;
+
+use App\Models\Buyer;
+use League\Fractal\TransformerAbstract;
+
+class BuyerTransformer extends TransformerAbstract
+{
+    /**
+     * List of resources to automatically include
+     *
+     * @var array
+     */
+    protected array $defaultIncludes = [
+        //
+    ];
+    
+    /**
+     * List of resources possible to include
+     *
+     * @var array
+     */
+    protected array $availableIncludes = [
+        //
+    ];
+    
+    /**
+     * A Fractal transformer.
+     *
+     * @return array
+     */
+    public function transform(Buyer $buyer)
+    {
+        return [
+            'id' => (int)$buyer->id,
+            'name' => (string)$buyer->name,
+            'email' => (string)$buyer->email,
+            'isVerified' => (int)$buyer->verified,
+            'createdAt' => (string)$buyer->created_at,
+            'updatedAt' => (string)$buyer->updated_at,
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('api.v1.buyers.show', $buyer->id),
+                ],
+            ]
+        ];
+    }
+}

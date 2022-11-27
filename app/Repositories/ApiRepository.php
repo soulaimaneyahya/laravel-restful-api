@@ -17,17 +17,26 @@ class ApiRepository implements ApiInterface
 
     public function all(Collection $collection, $code = 200)
     {
+		if ($collection->isEmpty()) {
+			return $this->successResponse(['data' => $collection], $code);
+		}
+		
+		$transformer = $collection->first()->transformer;
+		
         $collection = $this->filterData($collection);
         $collection = $this->sortData($collection);
         $collection = $this->paginate($collection);
+		$collection = $this->transformData($collection, $transformer);
         $collection = $this->cacheResponse($collection);
 
-        return $this->successResponse(['data' => $collection], $code);
+        return $this->successResponse($collection, $code);
     }
     
     public function find(Model $model, $code = 200)
     {
-        return $this->successResponse(['data' => $model], $code);
+		$transformer = $model->transformer;
+		$model = $this->transformData($model, $transformer);
+        return $this->successResponse($model, $code);
     }
 
 	protected function filterData(Collection $collection)
@@ -65,6 +74,13 @@ class ApiRepository implements ApiInterface
 		return $paginated;
 	}
 
+	protected function transformData($data, $transformer)
+	{
+		$transformation = fractal($data, new $transformer);
+
+		return $transformation->toArray();
+	}
+	
 	protected function cacheResponse($collection)
 	{
 		$url = request()->url();
