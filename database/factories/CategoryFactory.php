@@ -20,7 +20,9 @@ class CategoryFactory extends Factory
         return [
             'id' => Str::uuid(),
             'name' => fake()->sentence($nbWords = 2),
-            'description' => fake()->paragraph($nbSentences = 3)
+            'description' => fake()->paragraph($nbSentences = 3),
+            'created_at' => fake()->dateTimeBetween('-3 weeks'),
+            'updated_at' => fake()->dateTimeBetween('-3 weeks'),
         ];
     }
 }

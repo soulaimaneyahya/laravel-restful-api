@@ -19,7 +19,9 @@ class TransactionFactory extends Factory
     {
         return [
             'id' => Str::uuid(),
-            'quantity' => fake()->numberBetween(1,3)
+            'quantity' => fake()->numberBetween(1,3),
+            'created_at' => fake()->dateTimeBetween('-3 weeks'),
+            'updated_at' => fake()->dateTimeBetween('-3 weeks'),
         ];
     }
 }

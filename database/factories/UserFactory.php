@@ -29,6 +29,8 @@ class UserFactory extends Factory
             'verified' => $verified = fake()->randomElement([User::VERIFIED_USER, User::UNVERIFIED_USER]),
             'verification_token' => $verified ? null : User::generateVerificationToken(),
             'admin' => User::REGULAR_USER,
+            'created_at' => fake()->dateTimeBetween('-3 weeks'),
+            'updated_at' => fake()->dateTimeBetween('-3 weeks'),
         ];
     }
 

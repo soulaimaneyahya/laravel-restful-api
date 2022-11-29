@@ -9,5 +9,5 @@ interface ApiInterface
 {
     public function all(Collection $collection, $code = 200);
     
-    public function find(Model $model, $code = 200);
+    public function find(Model $instance, $code = 200);
 }

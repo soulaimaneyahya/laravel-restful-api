@@ -27,6 +27,8 @@ class ProductFactory extends Factory
             'status' => fake()->randomElement([Product::AVAILABLE_PRODUCT, Product::UNAVAILABLE_PRODUCT]),
             'image' => fake()->randomElement(['1.jpeg', '2.jpeg', '3.jpeg']),
             'seller_id' => User::all()->random()->id,
+            'created_at' => fake()->dateTimeBetween('-3 weeks'),
+            'updated_at' => fake()->dateTimeBetween('-3 weeks'),
             // User::inRandomOrder()->first()->id
         ];
     }

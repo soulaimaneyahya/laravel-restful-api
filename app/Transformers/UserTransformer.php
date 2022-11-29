@@ -8,24 +8,6 @@ use League\Fractal\TransformerAbstract;
 class UserTransformer extends TransformerAbstract
 {
     /**
-     * List of resources to automatically include
-     *
-     * @var array
-     */
-    protected array $defaultIncludes = [
-        //
-    ];
-    
-    /**
-     * List of resources possible to include
-     *
-     * @var array
-     */
-    protected array $availableIncludes = [
-        //
-    ];
-    
-    /**
      * A Fractal transformer.
      *
      * @return array
@@ -33,7 +15,7 @@ class UserTransformer extends TransformerAbstract
     public function transform(User $user)
     {
         return [
-            'id' => (int)$user->id,
+            'id' => (string)$user->id,
             'name' => (string)$user->name,
             'email' => (string)$user->email,
             'isVerified' => (int)$user->verified,
@@ -46,5 +28,19 @@ class UserTransformer extends TransformerAbstract
                 ],
             ]
         ];
+    }
+
+    public static function originalAttribute($index)
+    {
+        $attributes = [
+            'id' => 'id',
+            'name' => 'name',
+            'email' => 'email',
+            'isVerified' => 'verified',
+            'createdAt' => 'created_at',
+            'updatedAt' => 'updated_at',
+        ];
+
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 }
