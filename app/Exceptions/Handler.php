@@ -2,16 +2,20 @@
 
 namespace App\Exceptions;
 
-use App\Traits\ApiResponser;
 use Throwable;
+use App\Traits\ApiResponser;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 
 class Handler extends ExceptionHandler
 {
     use ApiResponser;
+
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -48,24 +52,52 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->renderable(function (NotFoundHttpException $e) {
-            return $this->infoResponse("Not Found", 404);
-        });
-
-        $this->renderable(function (AccessDeniedHttpException $e) {
-            return $this->infoResponse($e->getMessage(), 403);
-        });
-
-        $this->renderable(function (UnauthorizedHttpException $e) {
-            return $this->infoResponse($e->getMessage(), 403);
-        });
-
-        // other expected exceptions
-        $this->renderable(function (Throwable $e) {
-            if (config('app.debug')) {
-                return $this->infoResponse($e->getMessage(), 500);
+        $this->renderable(function (UnauthorizedHttpException $e, $request) {
+            if ($request->is('api/*')) {
+                return $this->errorResponse("Unauthorized", 401);
             }
-            return $this->infoResponse("Unexpected Exception. Try Later", 500);
+        });
+
+        $this->renderable(function (AccessDeniedHttpException $e, $request) {
+            if ($request->is('api/*')) {
+                return $this->errorResponse("Access Denied", 403);
+            }
+        });
+
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            if ($request->is('api/*')) {
+                return $this->errorResponse("Not Found", 404);
+            }
+        });
+
+        $this->renderable(function (MethodNotAllowedException $e, $request) {
+            if ($request->is('api/*')) {
+                return $this->errorResponse('The specified method for the request is invalid', 405);
+            }
+        });
+
+        $this->renderable(function (HttpException $e, $request) {
+            return $this->errorResponse($e->getMessage(), $e->getStatusCode());
+        });
+
+        $this->renderable(function (QueryException $e, $request) {
+            if ($request->is('api/*')) {
+                $errorCode = $e->errorInfo[1];
+
+                if ($errorCode == 1451) {
+                    return $this->errorResponse('Cannot remove this resource permanently. It is related with any other resource', 409);
+                }
+            }
+        });
+    
+        // other expected exceptions
+        $this->renderable(function (Throwable $e, $request) {
+            if ($request->is('api/*')) {
+                if (config('app.debug')) {
+                    return $this->errorResponse($e->getMessage(), 500);
+                }
+                return $this->errorResponse("Unexpected Exception. Try Later", 500);
+            }
         });
     }
 }
