@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Throwable;
 use App\Traits\ApiResponser;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -54,30 +55,36 @@ class Handler extends ExceptionHandler
     {
         $this->renderable(function (UnauthorizedHttpException $e, $request) {
             if ($request->is('api/*')) {
-                return $this->errorResponse("Unauthorized", 401);
+                return $this->infoResponse("Unauthorized", 401);
+            }
+        });
+
+        $this->renderable(function (AuthenticationException $e, $request) {
+            if ($request->is('api/*')) {
+                return $this->infoResponse("Unauthenticated", 401);
             }
         });
 
         $this->renderable(function (AccessDeniedHttpException $e, $request) {
             if ($request->is('api/*')) {
-                return $this->errorResponse("Access Denied", 403);
+                return $this->infoResponse("Access Denied", 403);
             }
         });
 
         $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->is('api/*')) {
-                return $this->errorResponse("Not Found", 404);
+                return $this->infoResponse("Not Found", 404);
             }
         });
 
         $this->renderable(function (MethodNotAllowedException $e, $request) {
             if ($request->is('api/*')) {
-                return $this->errorResponse('The specified method for the request is invalid', 405);
+                return $this->infoResponse('The specified method for the request is invalid', 405);
             }
         });
 
         $this->renderable(function (HttpException $e, $request) {
-            return $this->errorResponse($e->getMessage(), $e->getStatusCode());
+            return $this->infoResponse($e->getMessage(), $e->getStatusCode());
         });
 
         $this->renderable(function (QueryException $e, $request) {
@@ -85,7 +92,7 @@ class Handler extends ExceptionHandler
                 $errorCode = $e->errorInfo[1];
 
                 if ($errorCode == 1451) {
-                    return $this->errorResponse('Cannot remove this resource permanently. It is related with any other resource', 409);
+                    return $this->infoResponse('Cannot remove this resource permanently. It is related with any other resource', 409);
                 }
             }
         });
@@ -94,9 +101,9 @@ class Handler extends ExceptionHandler
         $this->renderable(function (Throwable $e, $request) {
             if ($request->is('api/*')) {
                 if (config('app.debug')) {
-                    return $this->errorResponse($e->getMessage(), 500);
+                    return $this->infoResponse($e->getMessage(), 500);
                 }
-                return $this->errorResponse("Unexpected Exception. Try Later", 500);
+                return $this->infoResponse("Unexpected Exception. Try Later", 500);
             }
         });
     }
